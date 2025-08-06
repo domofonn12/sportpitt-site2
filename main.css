@@ -1,0 +1,229 @@
+/* === Общие стили === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Общие стили для body и html */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Контейнер для всей страницы */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* чтобы занимал весь экран */
+  font-family: Arial, sans-serif;
+}
+
+/* Основной контент, который растягивается */
+main {
+  flex: 1; /* занимает всё свободное пространство */
+}
+
+/* Футер */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+}
+
+
+/* === Навигация (компактная) === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e1e;
+  padding: 15px 60px;
+  color: white;
+}
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* плавная анимация */
+}
+nav a:hover {
+  color: #ff9800;
+  transform: scale(1.1);
+}
+
+.banner {
+  position: relative;
+  height: 350px;
+  background: linear-gradient(90deg, #ffeb3b, #f44336);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.2); /* полупрозрачный слой для контраста */
+  backdrop-filter: blur(2px);
+}
+
+.banner h1 {
+  position: relative;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  animation: slideIn 1.5s ease-out;
+}
+
+
+
+/* === Блок товаров === */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 50px 20px;
+  background: #f4f4f4;
+}
+
+.product {
+  background: white;
+  border-radius: 12px;
+  width: 240px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.product img:hover {
+  transform: scale(1.05);
+}
+
+.product h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #1e1e1e;
+}
+
+.product p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.product ul {
+  list-style: none;
+  padding: 12px 0 0 0;
+  margin: 0;
+  text-align: left;
+  font-size: 0.97rem;
+  color: #444;
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin-top: auto; /* добавь эта строка */
+}
+
+.product ul li {
+  margin-bottom: 8px;
+  padding-left: 28px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.product ul li::before {
+  content: "✔";
+  color: #ff9800;
+  position: absolute;
+  left: 0;
+  font-size: 1.1em;
+  top: 0;
+}
+
+/* Для адаптивности */
+@media (max-width: 900px) {
+  .product {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .product {
+    width: 90%;
+  }
+}
+
+
+/* === Ссылки по всему сайту === */
+a {
+  color: #0066cc;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+a:hover {
+  color: #ff6600;
+  transform: scale(1.05);
+}
+
+/* === Футер === */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header,
+.banner,
+.products,
+footer {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+header { animation-delay: 0.1s; }
+.banner { animation-delay: 0.2s; }
+.products { animation-delay: 0.3s; }
+footer { animation-delay: 1s; }
